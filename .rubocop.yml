@@ -1,0 +1,23 @@
+AllCops:
+  Exclude:
+    - 'vendor/**/*'
+    - 'spec/fixtures/**/*'
+    - 'tmp/**/*'
+    - '.git/**/*'
+    - 'node_modules/**/*'
+    - 'Gemfile'
+    - 'Rakefile'
+    - 'bin/*'
+    - 'config/**/*'
+    - 'db/seeds.rb'
+    - 'test/channels/application_cable/connection_test.rb'
+  TargetRubyVersion: 2.6.2
+
+Style/FrozenStringLiteralComment:
+  Enabled: false    
+
+Style/Documentation:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 120  
