@@ -9,7 +9,7 @@ AllCops:
     - 'Rakefile'
     - 'bin/*'
     - 'config/**/*'
-    - 'db/seeds.rb'
+    - 'db/**/*'
     - 'test/channels/application_cable/connection_test.rb'
   TargetRubyVersion: 2.6.2
 
@@ -20,4 +20,7 @@ Style/Documentation:
   Enabled: false
 
 Layout/LineLength:
-  Max: 120  
+  Max: 120
+
+Metrics/BlockLength:
+  ExcludedMethods: ['describe']

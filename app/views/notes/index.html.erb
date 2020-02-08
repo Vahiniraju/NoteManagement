@@ -1,2 +1,32 @@
-<h1>Notes#index</h1>
-<p>Find me in app/views/notes/index.html.erb</p>
+<%= form_with url: '/notes', method: :get, local: true, class: 'px-3' do  |f| %>
+  <div class="input-group mb-5">
+    <%= f.text_field :search_field, class: 'form-control', maxlength: 20, value: params[:search_field] %>
+    <div class="input-group-append">
+      <%= f.submit "Search", class: 'btn btn-primary'%>
+    </div>
+  </div>
+<% end %>
+
+<div class="px-3 my-2">
+  <%= link_to 'New Note', new_note_path, method: :get, class: 'btn btn-primary' %>
+  <%= will_paginate @notes, class: 'd-inline float-right'%>
+</div>
+<% @notes.each do |note| %>
+<div class='col-12'>
+<div class="card my-5">
+  <div class="card-body">
+  <div class='row'>
+  <div class='col-10'>
+    <h5 class="card-title"><%= note.title%></h5>
+    <p class="card-text"> <%= note.text%></p>
+  </div>  
+  <div class='col-2 align-self-center'>
+    <a href=<%= edit_note_path(note) %> class="card-link">Edit Note</a></br>
+    <%= link_to 'Destroy', note_path(note), method: :delete, data: { confirm: "Are you sure, you want to delete the note with title?: #{note.title}" }, class: 'text-danger' %>
+  </div>
+  </div>
+  </div>
+</div>
+</div>
+<%end%>
+<%= will_paginate @notes, class: 'px-3 my-2 float-right' %>
