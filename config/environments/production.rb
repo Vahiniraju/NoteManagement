@@ -64,8 +64,16 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
-
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: host , protocol: 'https'}
+  config.action_mailer.smtp_settings = {
+      address:              'smtp.gmail.com',
+      port:                 587,
+      user_name:            ENV['EMAIL'],
+      password:             ENV['PASSWORD'],
+      authentication:       'plain',
+      enable_starttls_auto: true  }
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
@@ -92,7 +100,7 @@ Rails.application.configure do
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
   # middleware. The `delay` is used to determine how long to wait after a write
-  # to send a subsequent read to the primary.
+    # to send a subsequent read to the primary.
   #
   # The `database_resolver` class is used by the middleware to determine which
   # database is appropriate to use based on the time delay.
