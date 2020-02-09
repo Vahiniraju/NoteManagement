@@ -1,0 +1,8 @@
+Hi <%= @user.first_name.capitalize + ' ' + @user.last_name.capitalize %>,
+
+A note has been update from
+Title: <%= @old_title %>
+Body: <%= @old_text %>
+to
+Title: <%= @note.title %>
+Body: <%= @note.text %>

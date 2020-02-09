@@ -1,16 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe Note, type: :model do
+  let(:user) { create(:user) }
   context 'validations' do
     subject { build(:note) }
 
     it { should validate_length_of(:title).is_at_most(30) }
     it { should validate_length_of(:text).is_at_most(1000) }
+    it { should belong_to(:user) }
+    it { should validate_presence_of(:user_id) }
   end
 
   context 'before_validation' do
-    let(:note) { Note.new(title: '', text: 'text') }
-    let(:note2) { Note.new(title: '', text: '') }
+    let(:note) { Note.new(title: '', text: 'text', user_id: user.id) }
+    let(:note2) { Note.new(title: '', text: '', user_id: user.id) }
+
     it 'assign first 30 characters of text to title' do
       expect(note.valid?).to eq true
       expect(note.title).to eq note.text[0..29]

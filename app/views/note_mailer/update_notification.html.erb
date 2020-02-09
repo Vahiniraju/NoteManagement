@@ -1,0 +1,15 @@
+<h1>Note Management App</h1>
+
+<p>Hi <%= @user.first_name %>,</p>
+
+<p>
+  A note has been updated from <br>
+  <strong>Title:</strong> <%= @old_title %> <br>
+  <strong>Body:</strong> <%= @old_text %>
+</p>
+    to
+<p>
+  A note has been updated to <br>
+  <strong>Title:</strong> <%= @note.title %> <br>
+  <strong>Body:</strong> <%= @note.text %>
+</p>

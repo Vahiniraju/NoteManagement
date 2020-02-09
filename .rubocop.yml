@@ -11,6 +11,8 @@ AllCops:
     - 'config/**/*'
     - 'db/**/*'
     - 'test/channels/application_cable/connection_test.rb'
+    - 'spec/rails_helper.rb'
+    - 'spec/spec_helper.rb'
   TargetRubyVersion: 2.6.2
 
 Style/FrozenStringLiteralComment:
@@ -23,4 +25,4 @@ Layout/LineLength:
   Max: 120
 
 Metrics/BlockLength:
-  ExcludedMethods: ['describe']
+  ExcludedMethods: ['describe', 'context']
