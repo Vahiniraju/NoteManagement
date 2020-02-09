@@ -43,7 +43,7 @@ class NotesController < ApplicationController
 
   def destroy
     if @note.destroy
-      NoteMailer.destroy_notification(@note).deliver_later if current_user.mailable?
+      NoteMailer.destroy_notification(@note).deliver_now if current_user.mailable?
       flash[:success] = 'Note has been deleted'
     else
       flash[:danger] = 'Note could not be deleted'
