@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i.freeze
   VALID_NAME = /\A[a-zA-Z]/.freeze
-  VALID_PASSWORD = /\A[a-zA-Z][a-zA-z\d\-_@!#~^$%&*()]{8,}\z/.freeze
+  VALID_PASSWORD = /\A[a-zA-z\d\-_@!#~^$%&*()]{8,}\z/.freeze
 
   has_secure_password
   has_many :notes
@@ -14,7 +14,9 @@ class User < ApplicationRecord
   validates :last_name, presence: true, length: { maximum: 50 }, format: { with: VALID_NAME }
   validates :email, presence: true, length: { maximum: 255 }, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
-  validates :password, presence: true, length: { minimum: 8 }, format: { with: VALID_PASSWORD }, on: :create
+  validates :password, presence: true, length: { minimum: 8 },
+                       format: { with: VALID_PASSWORD },
+                       allow_nil: true
 
   class << self
     def digest(string)
@@ -25,6 +27,10 @@ class User < ApplicationRecord
     def new_token
       SecureRandom.urlsafe_base64
     end
+  end
+
+  def name
+    first_name.capitalize + ' ' + last_name.capitalize
   end
 
   def remember

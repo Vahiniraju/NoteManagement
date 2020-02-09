@@ -17,7 +17,8 @@
   <div class="card-body">
   <div class='row'>
   <div class='col-10'>
-    <h5 class="card-title"><%= note.title%></h5>
+    <h5 class="card-title d-inline"><%= note.title%></h5>
+    <h7 class="card-subtitle mb-2 text-muted"> Created by <%= note.user.name %> on <%= format_date(note.created_at) %> </h7>
     <p class="card-text"> <%= note.text%></p>
   </div>  
   <div class='col-2 align-self-center'>

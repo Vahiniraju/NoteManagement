@@ -1,7 +1,6 @@
-<div class="panel panel-default">
-  <div class="panel-heading">New User Signup</div>
-  <div class="panel-body">
-
+<div class="card custom-form">
+  <div class="card-header"> New User SignUp</div>
+  <div class="card-body">
     <div class="form-width">
       <%= form_for(@user, url: signup_path) do |f| %>
         <%= error_messages_for(@user) %>

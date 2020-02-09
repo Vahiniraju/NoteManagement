@@ -1,11 +1,9 @@
-
 <header class="jumbotron">
   <h1>Welcome To Note Management</h1>
+  <p> You can Manage your every notes here </p>
   <% if logged_in? %>
     <%= link_to "View Your Notes", notes_path, class: "btn btn-lg btn-primary" %>
   <% else %>
     <%= link_to "Sign up!", signup_path, class: "btn btn-lg btn-primary" %>
   <%end%>
 </header>
-
-

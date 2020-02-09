@@ -3,7 +3,7 @@
   font-size: 1.5em;
 }
 
-.form-width
+.custom-form
 {
   width: 50%;
   margin:10px auto;
@@ -95,7 +95,7 @@ aside {
 
 /* Forms */
 #error_explanation {
-  background-color: #e15349;
+  background-color: rgba(255, 0, 0, 0.2);
   border: 1px solid #BD362F;
 }
 

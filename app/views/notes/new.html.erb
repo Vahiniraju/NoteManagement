@@ -1,21 +1,22 @@
-<div class="form-width new_form">
-  <h2> Create Note </h2>
-
-  <%= form_with model: @note, local: true do |f| %>
-      <%= error_messages_for(@note) %>
-    <form>
-      <div class="form-group">
-        <label for="title">Title</label>
-        <%= f.text_field :title, class: 'form-control', maxlength: 30 %>
-      </div>
-      <div class="form-group">
-        <label for="text">Text</label>
-        <%= f.text_area :text, size: "60x12", class: 'form-control', maxlength: 1000 %>
-      </div>
-      <div class="form-group">
-        <%= link_to "Cancel", notes_path, class: "btn btn-danger float-left", type: 'button'%>
-        <%= f.submit "Create", class: 'btn btn-primary float-right'%>
-      </div>  
-    </form>
-  <% end %>
+<div class="card custom-form">
+  <div class="card-header">Create Note</div>
+  <div class="card-body">
+    <%= form_with model: @note, local: true do |f| %>
+        <%= error_messages_for(@note) %>
+      <form>
+        <div class="form-group">
+          <label for="title">Title</label>
+          <%= f.text_field :title, class: 'form-control', maxlength: 30 %>
+        </div>
+        <div class="form-group">
+          <label for="text">Text</label>
+          <%= f.text_area :text, size: "60x12", class: 'form-control', maxlength: 1000 %>
+        </div>
+        <div class="form-group">
+          <%= link_to "Cancel", notes_path, class: "btn btn-danger float-left", type: 'button'%>
+          <%= f.submit "Create", class: 'btn btn-primary float-right'%>
+        </div>
+      </form>
+    <% end %>
+  </div>
 </div>

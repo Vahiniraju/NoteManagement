@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   root 'welcome#index'
   resources :notes, except: :show
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :edit, :update]
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

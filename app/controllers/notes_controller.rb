@@ -19,7 +19,7 @@ class NotesController < ApplicationController
   def create
     @note = current_user.notes.build(note_params)
     if @note.save
-      NoteMailer.create_notification(@note).deliver_now if current_user.mailable?
+      NoteMailer.create_notification(@note).deliver_later if current_user.mailable?
       flash[:success] = 'Note successfully created'
       redirect_to notes_path
     else
@@ -33,7 +33,7 @@ class NotesController < ApplicationController
     old_title = @note.title
     old_text = @note.text
     if @note.update(note_params)
-      NoteMailer.update_notification(old_title, old_text, @note).deliver_now if current_user.mailable?
+      NoteMailer.update_notification(old_title, old_text, @note).deliver_later if current_user.mailable?
       flash[:success] = 'Note successfully updated'
       redirect_to notes_path
     else
@@ -43,7 +43,7 @@ class NotesController < ApplicationController
 
   def destroy
     if @note.destroy
-      NoteMailer.destroy_notification(@note).deliver_now if current_user.mailable?
+      NoteMailer.destroy_notification(@note).deliver_later if current_user.mailable?
       flash[:success] = 'Note has been deleted'
     else
       flash[:danger] = 'Note could not be deleted'
@@ -75,9 +75,7 @@ class NotesController < ApplicationController
   def authorize_user
     return unless logged_in?
 
-    note = Note.find(params[:id])
-    current_user_note = current_user.notes.where(id: params[:id])
-    return unless note.present? && !current_user_note.present?
+    return if current_user.notes.where(id: params[:id]).present?
 
     flash[:danger] = 'You are not authorized for this action'
     redirect_to notes_path

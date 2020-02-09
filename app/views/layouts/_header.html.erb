@@ -8,7 +8,8 @@
 
   <ul class="nav justify-content-end">
       <% if logged_in?  %>
-        <li class= 'nav-item'><%= link_to "Log out", logout_path, method: :delete, class: 'nav-link'%></li>
+        <li class= 'nav-item'><%= link_to "Edit Profile", edit_user_path(current_user), class: 'nav-link text-white'%></li>
+        <li class= 'nav-item'><%= link_to "Log out", logout_path, method: :delete, class: 'nav-link text-white'%></li>
       <%else%>
         <li><%= link_to "Sign in", login_path %></li>
       <%end%>
