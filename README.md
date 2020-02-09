@@ -3,22 +3,16 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
+Rails Version 6
 
-* Ruby version
+Ruby Version 2.6.2
 
-* System dependencies
+Installation Process:
+ clone the repository, install ruby 2.6.2 and rails 6 and bundle install
 
-* Configuration
+This App allows users to maintain create, edit and delete notes.
+Users can choose if they want emails be received apart from account
+activation, password reset emails. 
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+If user accepts to receive emails, they will be notified with create,
+edit and deletion of notes.
