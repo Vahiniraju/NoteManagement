@@ -15,4 +15,5 @@ Users can choose if they want emails be received apart from account
 activation, password reset emails. 
 
 If user accepts to receive emails, they will be notified with create,
-edit and deletion of notes.
+edit and deletion of notes. User can any time choose to optout from being 
+emailed by using edit profile option where they unset the feature.
