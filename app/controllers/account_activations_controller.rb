@@ -5,10 +5,9 @@ class AccountActivationsController < ApplicationController
       user.activate
       login(user)
       flash[:success] = 'Account is successfully Activated!'
-      redirect_to notes_path
     else
       flash[:danger] = 'The activation link is not valid'
-      redirect_to root_path
     end
+    redirect_to root_path
   end
 end
